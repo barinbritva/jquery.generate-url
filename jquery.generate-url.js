@@ -3,7 +3,8 @@
 		var UrlGenerator = {
 			options: {
 				urlField: null,
-				emptyOnly: true
+				emptyOnly: true,
+				bindType: 'change'
 			},
 
 			init: function(options) {
@@ -39,7 +40,7 @@
 
 				if (!this.options.emptyOnly || urlField.val() == '') {
 					var self = this;
-					this.options.source.on('change', function() {
+					this.options.source.on(this.options.bindType, function() {
 						var oldValue = urlField.val();
 						var newValue = self.convert();
 
